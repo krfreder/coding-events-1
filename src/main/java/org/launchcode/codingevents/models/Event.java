@@ -1,17 +1,24 @@
 package org.launchcode.codingevents.models;
 
+import org.aspectj.apache.bcel.generic.Tag;
+
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Chris Bay
  */
 @Entity
 public class Event extends AbstractEntity {
+
+    @ManyToMany
+    private final List<Tag> tags = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     @Valid
